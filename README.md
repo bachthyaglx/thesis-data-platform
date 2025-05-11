@@ -29,7 +29,7 @@ docker compose exec -it jobmanager bash -c "./bin/sql-client.sh -f /data/kafka-t
 
 ## Test data using CLI (option 2) by duckDB:
 
-# Check files in Minio (should see a mix of parquet, json, and avro files under default_database.db/t_i_orders):
+Check files in Minio (should see a mix of parquet, json, and avro files under default_database.db/t_i_orders):
 ```bash
 docker compose exec mc bash -c "mc ls -r minio/warehouse/"
 ```
