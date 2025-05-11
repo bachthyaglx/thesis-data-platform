@@ -1,16 +1,4 @@
-# Streaming data from Kafka to Iceberg with Apache Flink
-
-_👉 See the supporting blog post at https://www.decodable.co/blog/kafka-to-iceberg-with-flink_
-
 ## Run it all
-
-The end-to-end example does the following:
-
-* Brings up a Flink cluster, Kafka broker, and MinIO object store
-* Generates dummy data to the Kafka `orders` topic
-* Uses Flink SQL to write the Kafka `orders` topic to a table in Iceberg format on MinIO
-
-_NB. test data is generated using [ShadowTraffic](https://shadowtraffic.io/). You can get a free trial licence—put your `license.env` file in the `shadowtraffic` folder. If you don't want to use ShadowTraffic you can insert your own dummy data on a Kafka topic._
 
 ```bash
 # Bring up the stack
@@ -21,17 +9,25 @@ docker compose exec -it generate_data python producer.py
 
 # Start job to ingest from Kafka into Iceberg
 docker compose exec -it jobmanager bash -c "./bin/sql-client.sh -f /data/kafka-to-iceberg.sql"
-
-# Check files in Minio (should see a mix of parquet, json, and avro files under default_database.db/t_i_orders):
-docker compose exec mc bash -c "mc ls -r minio/warehouse/"
 ```
 
-Test data in UI:
-    Kafka UI (Kafdrop): http://localhost:9000
-    Flink UI: http://localhost:8081
-    MinIO: http://localhost:9001 (admin/password)
+## Test data in UI (option 1):
+* Kafka UI (Kafdrop): http://localhost:9000
+  
+  ![image](https://github.com/user-attachments/assets/b47615f9-baef-4170-a165-250ef4bd9dca)
+* Flink UI: http://localhost:8081
+  
+  ![image](https://github.com/user-attachments/assets/ab7aee08-e145-439f-b4a3-ccbbb32b34fe)
+* MinIO: http://localhost:9001 (admin/password)
+  
+  ![image](https://github.com/user-attachments/assets/9816f55c-fe5a-4e06-a494-50d27b43329e)
 
-Check the data in DuckDB
+## Test data using CLI (option 2) by duckDB:
+
+Check files in Minio (should see a mix of parquet, json, and avro files under default_database.db/t_i_orders):
+```bash
+docker compose exec mc bash -c "mc ls -r minio/warehouse/"
+```
 
 1. Build a query using the latest manifest
 
