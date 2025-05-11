@@ -17,9 +17,6 @@ docker compose exec -it generate_data python producer.py
 
 # Start job to ingest from Kafka into Iceberg
 docker compose exec -it jobmanager bash -c "./bin/sql-client.sh -f /data/kafka-to-iceberg.sql"
-
-# Check files in Minio (should see a mix of parquet, json, and avro files under default_database.db/t_i_orders):
-docker compose exec mc bash -c "mc ls -r minio/warehouse/"
 ```
 
 Test data in UI:
@@ -32,7 +29,12 @@ Test data in UI:
     MinIO: http://localhost:9001 (admin/password)
     ![image](https://github.com/user-attachments/assets/9816f55c-fe5a-4e06-a494-50d27b43329e)
 
-Check the data in DuckDB
+Check the data in DuckDB, using CLI
+
+# Check files in Minio (should see a mix of parquet, json, and avro files under default_database.db/t_i_orders):
+```bash
+docker compose exec mc bash -c "mc ls -r minio/warehouse/"
+```
 
 1. Build a query using the latest manifest
 
