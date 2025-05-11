@@ -1,13 +1,5 @@
 ## Run it all
 
-The end-to-end example does the following:
-
-* Brings up a Flink cluster, Kafka broker, and MinIO object store
-* Generates dummy data to the Kafka `orders` topic
-* Uses Flink SQL to write the Kafka `orders` topic to a table in Iceberg format on MinIO
-
-_NB. test data is generated using [ShadowTraffic](https://shadowtraffic.io/). You can get a free trial licence—put your `license.env` file in the `shadowtraffic` folder. If you don't want to use ShadowTraffic you can insert your own dummy data on a Kafka topic._
-
 ```bash
 # Bring up the stack
 docker compose up
