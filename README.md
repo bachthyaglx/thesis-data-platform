@@ -1,7 +1,3 @@
-# Streaming data from Kafka to Iceberg with Apache Flink
-
-_👉 See the supporting blog post at https://www.decodable.co/blog/kafka-to-iceberg-with-flink_
-
 ## Run it all
 
 The end-to-end example does the following:
@@ -28,8 +24,13 @@ docker compose exec mc bash -c "mc ls -r minio/warehouse/"
 
 Test data in UI:
     Kafka UI (Kafdrop): http://localhost:9000
+    ![image](https://github.com/user-attachments/assets/b47615f9-baef-4170-a165-250ef4bd9dca)
+
     Flink UI: http://localhost:8081
+    ![image](https://github.com/user-attachments/assets/ab7aee08-e145-439f-b4a3-ccbbb32b34fe)
+
     MinIO: http://localhost:9001 (admin/password)
+    ![image](https://github.com/user-attachments/assets/9816f55c-fe5a-4e06-a494-50d27b43329e)
 
 Check the data in DuckDB
 
