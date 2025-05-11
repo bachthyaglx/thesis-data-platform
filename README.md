@@ -19,7 +19,7 @@ docker compose exec -it generate_data python producer.py
 docker compose exec -it jobmanager bash -c "./bin/sql-client.sh -f /data/kafka-to-iceberg.sql"
 ```
 
-Test data in UI:
+## Test data in UI (option 1):
 * Kafka UI (Kafdrop): http://localhost:9000
   ![image](https://github.com/user-attachments/assets/b47615f9-baef-4170-a165-250ef4bd9dca)
 * Flink UI: http://localhost:8081
@@ -27,7 +27,7 @@ Test data in UI:
 * MinIO: http://localhost:9001 (admin/password)
   ![image](https://github.com/user-attachments/assets/9816f55c-fe5a-4e06-a494-50d27b43329e)
 
-Check the data in DuckDB, using CLI
+## Test data using CLI (option 2) by duckDB:
 
 # Check files in Minio (should see a mix of parquet, json, and avro files under default_database.db/t_i_orders):
 ```bash
