@@ -20,6 +20,7 @@ docker compose exec -it jobmanager bash -c "./bin/sql-client.sh -f /data/kafka-t
 ```
 
 Test data in UI:
+    
     Kafka UI (Kafdrop): http://localhost:9000
     ![image](https://github.com/user-attachments/assets/b47615f9-baef-4170-a165-250ef4bd9dca)
 
